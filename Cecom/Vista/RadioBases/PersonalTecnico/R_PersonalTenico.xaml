@@ -1,0 +1,36 @@
+﻿<Page x:Class="Cecom.Vista.RadioBases.PersonalTecnico.R_PersonalTenico"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Cecom.Vista.RadioBases.PersonalTecnico"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800" d:Background="White"
+      Title="R_PersonalTenico">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="70" />
+        </Grid.RowDefinitions>
+        <DataGrid Grid.Row="0" x:Name="dgv_listaPersonal" IsReadOnly="True" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding pt_nombre}" Width="*" />
+                <DataGridTextColumn Header="Cedula de Identidad" Binding="{Binding pt_ci}" Width="*" />
+                <DataGridTextColumn Header="Telefono" Binding="{Binding pt_telefono}" Width="*" />
+                <DataGridTextColumn Header="Empresa" Binding="{Binding em_nombre}" Width="*" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <DockPanel Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,40,0">
+            <DockPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Margin" Value="5,0,5,0" />
+                    <Setter Property="Padding" Value="20,10,20,10" />
+                </Style>
+            </DockPanel.Resources>
+            <Button Content="Nuevo" Click="Button_Click" />
+            <Button Content="Actualizar" />
+            <Button Content="Eliminar" />
+        </DockPanel>
+    </Grid>
+</Page>

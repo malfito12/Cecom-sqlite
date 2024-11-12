@@ -1,0 +1,19 @@
+﻿<Window x:Class="Cecom.Login.LoginCecom"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Cecom.Login"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="SingleBorderWindow"
+        mc:Ignorable="d"
+        Title="LoginCecom" Height="250" Width="400">
+    <Grid>
+        <StackPanel Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Label Content="Iniciar Sesion" HorizontalAlignment="Center" FontSize="15" FontWeight="Bold" VerticalAlignment="Top" Margin="0,0,0,10" />
+            <TextBox x:Name="UsernameTextBox" Width="250" Margin="0,0,0,10" />
+            <PasswordBox x:Name="PasswordBox" Width="250" Margin="0,0,0,20" />
+            <Button Content="Aceptar" Width="250" Click="LoginButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

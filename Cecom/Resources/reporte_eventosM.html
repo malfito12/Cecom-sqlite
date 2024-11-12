@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Reporte de Eventos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            /*background-color: #f4f4f4;*/
+        }
+
+        h3 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            font-size:8px;
+        }
+
+        th {
+            background-color: #4CAF50; /* Color de encabezado */
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9; /* Color alterno para filas */
+        }
+
+        tr:hover {
+            background-color: #f1f1f1; /* Color al pasar el mouse */
+        }
+
+        @media (max-width: 600px) {
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+
+            th {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+
+            tr {
+                margin-bottom: 10px;
+                border: 1px solid #ccc;
+            }
+
+            td {
+                text-align: right;
+                padding-left: 50%;
+                position: relative;
+            }
+
+                td::before {
+                    content: attr(data-label);
+                    position: absolute;
+                    left: 0;
+                    width: 50%;
+                    padding-left: 10px;
+                    font-weight: bold;
+                    text-align: left;
+                }
+        }
+    </style>
+</head>
+<body>
+    <h3>Reporte de Eventos</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>N°</th>
+                <th>NOMBRE</th>
+                <th>CUENTA</th>
+                <th>HORA</th>
+                <th>FECHA</th>
+                <th>DEPARTAMENTO</th>
+                <th>DESCRIPCIÓN</th>
+                <th>OPERADOR</th>
+                <th>OBSERVACIONES</th>
+            </tr>
+        </thead>
+        <tbody>
+            @FILAS
+        </tbody>
+    </table>
+</body>
+</html>
+
+

@@ -1,0 +1,90 @@
+﻿CREATE TABLE usuarios (
+	id_usuario INTEGER PRIMARY KEY AUTOINCREMENT,
+	name TEXT NOT NULL,
+	password TEXT NOT NULL,
+	email TEXT NOT NULL,
+	rol TEXT NOT NULL
+);
+
+CREATE TABLE multicentros(
+	id_multicentro INTEGER PRIMARY KEY AUTOINCREMENT,
+	nombre TEXT NOT NULL,
+	cuenta INTEGER NOT NULL,
+	departamento TEXT NOT NULL,
+	id_usuario INTEGER,
+	CONSTRAINT pk_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
+);
+
+CREATE TABLE alarmas_m(
+	id_alarma INTEGER PRIMARY KEY AUTOINCREMENT,
+	evento TEXT NOT NULL,
+	fecha TEXT NOT NULL,
+	estado INTEGER NOT NULL,
+	id_usuario INTEGER,
+	CONSTRAINT pk_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
+);
+
+CREATE TABLE eventos_m(
+	id_evento INTEGER PRIMARY KEY AUTOINCREMENT,
+	hora TEXT NOT NULL,
+	fecha TEXT NOT NULL,
+	tipo TEXT NOT NULL,
+	observaciones TEXT,
+	id_alarma INTEGER NOT NULL,
+	id_multicentro INTEGER NOT NULL,
+	id_usuario INTEGER NOT NULL,
+	CONSTRAINT pk_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario),
+	CONSTRAINT pk_alarma FOREIGN KEY (id_alarma) REFERENCES alarmas_m(id_alarma),
+	CONSTRAINT pk_multicentro FOREIGN KEY (id_multicentro) REFERENCES multicentros(id_multicentro)
+);
+
+CREATE TABLE reportes_eventos_m(
+	id_reporte INTEGER PRIMARY KEY AUTOINCREMENT,
+	datos TEXT NOT NULL,
+	fecha TEXT NOT NULL,
+	id_alarma INTEGER NOT NULL,
+	id_usuario INTEGER,
+	CONSTRAINT pk_alarma FOREIGN KEY (id_alarma) REFERENCES alarmas_m(id_alarma),
+	CONSTRAINT pk_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
+);
+
+CREATE TABLE empresas(
+	id_empresa INTEGER PRIMARY KEY AUTOINCREMENT,
+	nombre TEXT NOT NULL,
+	alias TEXT NOT NULL,
+	direccion TEXT,
+	telefono TEXT,
+	id_usuario INTEGER,
+	CONSTRAINT pk_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
+);
+CREATE TABLE personalTecnicos(
+	id_personal INTEGER PRIMARY KEY AUTOINCREMENT,
+	nombre TEXT NOT NULL,
+	ci TEXT NOT NULL,
+	telefono INTEGER,
+	id_empresa INTEGER NOT NULL,
+	id_usuario INTEGER,
+	CONSTRAINT pk_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario),
+	CONSTRAINT pk_empresa FOREIGN KEY (id_empresa) REFERENCES empresas(id_empresa)
+);
+
+CREATE TABLE llaves(
+	id_llave INTEGER PRIMARY KEY AUTOINCREMENT,
+	codigo INTEGER NOT NULL,
+	fechaI TEXT NOT NULL,
+	sitio TEXT NOT NULL,
+	departamento TEXT NOT NULL,
+	responsable TEXT NOT NULL,
+	motivo TEXT NOT NULL,
+	estado INTEGER NOT NULL,
+	fechaS TEXT,
+	id_personal INTEGER,
+	id_empresa INTEGER,
+	id_usuario INTEGER,
+	CONSTRAINT pk_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario),
+	CONSTRAINT pk_empresa FOREIGN KEY (id_empresa) REFERENCES empresas(id_empresa),
+	CONSTRAINT pk_personal FOREIGN KEY (id_personal) REFERENCES personalTecnicos(id_personal)
+);
+
+INSERT INTO usuarios (name,password,email,rol) VALUES ("admin","admin","admin@gmail.com","ADMINISTRADOR");
+

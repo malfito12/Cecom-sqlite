@@ -1,0 +1,29 @@
+﻿<Window x:Class="Cecom.Vista.Usuarios.C_Usuario"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Cecom.Vista.Usuarios"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="ToolWindow"
+        Title="C_Usuario" Height="350" Width="300">
+    <Grid>
+        <StackPanel Margin="20">
+            <Label Content="Usuario" HorizontalAlignment="Center" FontSize="13" FontWeight="Bold"/>
+            <Label Content="Nombre Usuario"/>
+            <TextBox Name="utxt_name" />
+            <Label Content="Contraseña"/>
+            <PasswordBox Name="utxt_pass" />
+            <Label Content="Correo Electronico"/>
+            <TextBox Name="utxt_email" />
+            <Label Content="Tipo de Usuario"/>
+            <ComboBox Name="ucb_rol">
+                <ComboBoxItem Content="ADMINISTRADOR" />
+                <ComboBoxItem Content="SUPERVISOR" />
+                <ComboBoxItem Content="USUARIO" />
+            </ComboBox>
+            <Button Content="Guardar" Margin="0,10,0,0" Click="Button_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
