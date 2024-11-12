@@ -46,7 +46,7 @@ namespace Cecom.Controladores.login
                 {
                     MessageBox.Show(ex.ToString());
                 }*/
-            int numero = 0;
+            int numero = 23;
             using (OleDbConnection connection = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\\Access\\escuela1.accdb;"))
             {
                 OleDbCommand cmd = new OleDbCommand(consulta, connection);
